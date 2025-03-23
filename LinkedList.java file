@@ -1,0 +1,84 @@
+// LinkedList.java
+
+// Define the Node class
+class Node {
+    int data;
+    Node next;
+
+    // Constructor
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+// Define the SinglyLinkedList class
+class SinglyLinkedList {
+    Node head;
+
+    // Constructor
+    SinglyLinkedList() {
+        head = null;
+    }
+
+    // Method to insert a node at the beginning
+    public void insertAtBeginning(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+    }
+
+    // Method to insert a node at the end
+    public void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+        Node temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        temp.next = newNode;
+    }
+
+    // Method to delete a node from the beginning
+    public void deleteFromBeginning() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        head = head.next; // Remove the first node
+    }
+
+    // Method to display the list
+    public void display() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+}
+
+// Main class to test the linked list
+public class LinkedList {
+    public static void main(String[] args) {
+        SinglyLinkedList list = new SinglyLinkedList();
+        
+        // Insert elements at the beginning and end
+        list.insertAtBeginning(10);
+        list.insertAtBeginning(20);
+        list.insertAtEnd(5);
+        
+        System.out.println("Linked List after insertions:");
+        list.display();
+        
+        // Delete the first node
+        list.deleteFromBeginning();
+        
+        System.out.println("Linked List after deleting from the beginning:");
+        list.display();
+    }
+}
